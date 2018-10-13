@@ -1,0 +1,6 @@
+<aura:component implements="lightning:actionOverride" controller="AccountsController">
+    <aura:attribute name="accounts" type="List" />
+    <aura:attribute name="selectedAccounts" type="List" />
+    <c:createUpdateDeleteAccount></c:createUpdateDeleteAccount>
+    <c:AccountList></c:AccountList>
+</aura:component>

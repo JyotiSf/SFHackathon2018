@@ -1,0 +1,99 @@
+<aura:component controller="AccountsController">
+	  <aura:attribute name="selectedAccounts" type="List" />
+     <aura:handler event="c:RefreshAccount" action="{!c.handleApplicationEvent}"/>
+    <div aura:id="Details">
+        <h3 class="slds-text-heading_large " style="text-align:center;border:1px solid blue" title="">Account Detail</h3>
+            
+        <table class="slds-table slds-table_bordered slds-table_striped slds-table_cell-buffer ">
+        <thead>
+            <tr class="slds-text-heading_label">
+                <th scope="col">
+                    <div class="slds-truncate" title="Account Name">Account Name</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Account Number">Account Number</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Account Owner">Account Owner</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Account Source">Account Source</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Parent Account">Parent Account</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Annual Revenue">Annual Revenue</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Type">Type</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Created By">Created By</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Last Modified By">Last Modified By</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Industry">Industry</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Description">Description</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Phone">Phone</div>
+                </th>
+                <th scope="col">
+                    <div class="slds-truncate" title="Fax">Fax</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Use the Apex model and controller to fetch server side data -->
+            <aura:iteration items="{!v.selectedAccounts}" var="selectedAccount">
+                <tr>
+                    <td>
+                        <div class="slds-truncate" title="{!selectedAccount.Name}">{!selectedAccount.Name}</div>
+                    </td>
+                    <td>
+                        <div class="slds-truncate" title="{!selectedAccount.AccountNumber}">{!selectedAccount.AccountNumber}</div>
+                    </td>
+                    <td>
+                        <div class="slds-truncate" title="{!selectedAccount.OwnerId}">{!selectedAccount.Owner.Name}</div>
+                    </td>
+                    <td>
+                        <div class="slds-truncate" title="{!selectedAccount.AccountSource}">{!selectedAccount.AccountSource}</div>
+                    </td>
+                    <td>
+                        <div class="slds-truncate" title="{!selectedAccount.AnnualRevenue}">{!selectedAccount.ParentAccount}</div>
+                    </td>
+                    <td>
+                        <div class="slds-truncate" title="{!selectedAccount.AnnualRevenue}">{!selectedAccount.AnnualRevenue}</div>
+                    </td>
+                    <td>
+                        <div class="slds-truncate" title="{!selectedAccount.Type}">{!selectedAccount.Type}</div>
+                    </td>
+                    <td>
+                        <div class="slds-truncate" title="{!selectedAccount.CreatedById}">{!selectedAccount.CreatedBy.Name}</div>
+                    </td>
+                    <td>
+                        <div class="slds-truncate" title="{!selectedAccount.LastModifiedBy}">{!selectedAccount.LastModifiedBy.Name}</div>
+                    </td>
+                    <td>
+                        <div class="slds-truncate" title="{!selectedAccount.Industry}">{!selectedAccount.Industry}</div>
+                    </td>
+                    <td>
+                        <div class="slds-truncate" title="{!selectedAccount.Description}">{!selectedAccount.Description}</div>
+                    </td>
+                    <td>
+                        <div class="slds-truncate" title="{!selectedAccount.Phone}">{!selectedAccount.Phone}</div>
+                    </td>
+                    <td>
+                        <div class="slds-truncate" title="{!selectedAccount.Fax}">{!selectedAccount.Fax}</div>
+                    </td>
+                </tr>
+            </aura:iteration>
+        </tbody>
+    </table>
+    </div>
+</aura:component>

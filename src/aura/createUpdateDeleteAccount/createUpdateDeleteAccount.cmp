@@ -1,0 +1,45 @@
+<aura:component controller="AccountsController" implements="lightning:actionOverride,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes"
+    access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler event="c:SelectedAccount" action="{!c.handleApplicationEvent}" />
+    <aura:registerEvent name="refreshEvent" type="c:RefreshAccount" />
+    <aura:attribute name="selectedAccountSource" type="String" />
+    <aura:attribute name="selectedAccounts" type="List" />
+    <lightning:button variant="neutral" label="New" onclick="{!c.newAccount}" />
+    <lightning:button variant="neutral" label="Update Account Source" onclick="{!c.openmodal}" />
+    <lightning:button variant="neutral" label="Delete" onclick="{!c.deleteSelectedAccount}" />
+    <div role="dialog" tabindex="-1" aria-labelledby="header43" aura:id="Modalbox" class="slds-modal slds-modal_large">
+        <div class="slds-modal__container">
+            <div class="slds-modal__header">
+                Update Account Source
+            </div>
+            <div class="slds-modal__content slds-p-around--medium">
+                <!--Account Source-->
+                <div class="slds-p-left_xx-large slds-p-right_xx-large">
+                    <div class="slds-page-header" style="padding-top: 9px; padding-bottom: 9px;, padding-right: 9px;, padding-left: 10px;">
+                        <h3 style="font-size: 1rem;" title="">Select Account Source</h3>
+                    </div>
+                </div>
+
+                <div class="slds-align_absolute-center slds-size_5-of-12 slds-p-around--medium slds-p-center_xx-small slds-p-horizontal_x-large ">
+                    <ui:inputSelect label="Account source" aura:id="InputSelectDynamic" class="slds-select" change="{!c.onPicklistChange}" />
+                </div>
+                <!--All Account-->
+                <div class="slds-p-left_xx-large slds-p-right_xx-large slds-p-top_medium">
+                    <div class="slds-page-header" style="padding-top: 9px; padding-bottom: 9px;, padding-right: 9px;, padding-left: 10px;">
+                        <h3 style="font-size: 1rem;" title="">Selected Accounts</h3>
+                    </div>
+                </div>
+                <div class="slds-p-around--medium">
+                    <c:AccountDetail selectedAccounts="{!v.selectedAccounts}"></c:AccountDetail>
+                </div>
+            </div>
+
+            <div class="slds-modal__footer">
+                <ui:button label="Update" press="{!c.updateAccounts}" />
+                <ui:button label="close" press="{!c.closeModal}" />
+            </div>
+        </div>
+    </div>
+    <div class="slds-backdrop " aura:id="Modalbackdrop"></div>
+</aura:component>
